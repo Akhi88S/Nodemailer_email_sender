@@ -1,0 +1,78 @@
+<h1>Fun Of Heuristic</h1>
+
+<form style="width: 50%; margin: auto">
+  <!-- <input id="name" name="name1" required minlength="4" [(ngModel)]="name1" #nameId="ngModel" placeholder="Name" style="width: 100%; height: 30px;font-size: 20px;">
+  <br>
+  <div *ngIf="nameId.invalid && (nameId.dirty || nameId.touched)">
+
+    <div *ngIf="nameId?.errors.required" style="color: red;font-size: 20px;">
+      Name is required.
+    </div>
+    <div *ngIf="nameId?.errors.minlength" style="color: red;font-size: 20px;">
+      Name must be at least 4 characters long.
+    </div>
+
+  </div>
+ <br><br> -->
+  <div>
+    <h1>Material Form</h1>
+
+    <span style="width: 100%">
+      <input matInput placeholder="Name" [formControl]="nameFormControl" />
+      <span *ngIf="nameFormControl.hasError('minlength')">
+        Name must be at least 4 characters long.
+      </span>
+      <span *ngIf="nameFormControl.hasError('required')">
+        Name is <strong>required</strong>
+      </span>
+    </span>
+
+    <span style="width: 100%">
+
+      <input matInput placeholder="Email" [formControl]="emailFormControl"/>
+      <span *ngIf="emailFormControl.hasError('email')">
+        Please enter a valid email address
+      </span>
+      <span *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </span>
+    </span>
+
+    <span style="width: 100%">
+      <input matInput placeholder="Entermessage" [formControl]="messageFormControl" />
+      <span *ngIf="messageFormControl.hasError('minlength')">
+        Message must be at least 4 characters long.
+      </span>
+      <span *ngIf="messageFormControl.hasError('required')">
+        Message is <strong>required</strong>
+      </span>
+    </span>
+
+
+    <button
+      [disabled]="emailFormControl.invalid || nameFormControl.invalid || loading"
+      color="primary"
+      (click)="register()">
+      {{buttionText}}
+    </button>
+  </div>
+</form>
+<!-- <button [routerLink]="['/profile', 12367]">Go to Profile</button> -->
+<br/>
+<div style="width: 50%; margin: auto">
+  <div class="dinamic">
+    <button (click)="assignComponent('cow')">
+      Cow
+    </button>
+    <button (click)="assignComponent('cat')">
+      Cat
+    </button>
+    <button (click)="assignComponent('dog')">
+      Dog
+    </button>
+  </div>
+
+  <div>
+    <h1><ng-container *ngComponentOutlet="dummyComponent"></ng-container></h1>
+  </div>
+</div>
